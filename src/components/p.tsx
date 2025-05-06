@@ -2,11 +2,13 @@ import React from "react";
 import { Text } from "react-native";
 import { useTheme } from "../providers";
 import { IP } from "../types";
+import { fonts } from "../constants/fonts";
 
 const P = ({
     color = "white",
     size = 14,
     align = "left",
+    font= "satoshi-medium",
     weight = "normal",
     transform = "none",
     lineHeight,
@@ -26,6 +28,7 @@ const P = ({
                     color: colors[color],
                     fontSize: size,
                     fontWeight: weight,
+                    fontFamily: fonts[font],
                     textAlign: align,
                     textTransform: transform,
                     letterSpacing: spacing
