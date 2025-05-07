@@ -37,8 +37,7 @@ const GetStartedScreen = () => {
                     <Space height={21} />
                     <ElevatedButton
                         action={() => navigate("choose_mode")}
-                        text="Get Started"
-                        style={{ height: 80, justifyContent: "center", alignItems: "center" }}
+                        title="Get Started"
                     />
                     <Space height={bottom + 32} />
                 </View>

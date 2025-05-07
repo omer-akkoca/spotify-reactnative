@@ -4,16 +4,18 @@ import { useTheme } from "../providers";
 import P from "./p";
 
 interface IElevatedButton {
-    text: string,
+    title: string,
     action: (event: GestureResponderEvent) => void,
     disabled?: boolean,
+    height?: number,
     style?: ViewStyle,
 }
 
 const ElevatedButton = ({
-    text,
+    title,
     action,
     disabled = false,
+    height= 80,
     style = {}
 }: IElevatedButton) => {
 
@@ -24,9 +26,9 @@ const ElevatedButton = ({
             activeOpacity={0.75}
             disabled={disabled}
             onPress={action}
-            style={[styles.container, { backgroundColor: colors.primary, shadowColor: colors.black, ...style, }, style]}
+            style={[styles.container, { backgroundColor: colors.primary, shadowColor: colors.black, height: height }, style]}
         >
-            <P color="white" size={20} weight="bold" align="center">{text}</P>
+            <P color="white" size={20} weight="bold" align="center">{title}</P>
         </TouchableOpacity>
     )
 }
@@ -35,7 +37,8 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         borderRadius: 30,
-        paddingVertical: 16,
+        justifyContent: "center",
+        alignItems: "center",
         shadowOffset: {
             width: 0,
             height: 5,

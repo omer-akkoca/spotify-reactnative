@@ -54,8 +54,7 @@ const ChooseModeScreen = () => {
                     <Space height={50} />
                     <ElevatedButton
                         action={() => null}
-                        text="Continue"
-                        style={{ height: 80, justifyContent: "center", alignItems: "center" }}
+                        title="Continue"
                     />
                     <Space height={bottom + 32} />
 
