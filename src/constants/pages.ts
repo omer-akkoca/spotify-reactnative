@@ -1,9 +1,11 @@
 import { stackTypes } from "../types"
 
 const pages: {
-    x: stackTypes,
+    splash: stackTypes,
+    get_started: stackTypes,
 } = {
-    x: "x",
+    splash: "splash",
+    get_started: "get_started",
 }
 
 export default pages;
