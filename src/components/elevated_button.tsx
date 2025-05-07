@@ -2,20 +2,27 @@ import React from "react";
 import { GestureResponderEvent, StyleSheet, TouchableOpacity, ViewStyle } from "react-native";
 import { useTheme } from "../providers";
 import P from "./p";
+import { colorsType } from "../types";
 
 interface IElevatedButton {
     title: string,
+    titleColor?: colorsType,
     action: (event: GestureResponderEvent) => void,
     disabled?: boolean,
     height?: number,
+    bgColor?: colorsType,
+    elevation?: boolean,
     style?: ViewStyle,
 }
 
 const ElevatedButton = ({
     title,
+    titleColor= "white",
     action,
     disabled = false,
     height= 80,
+    bgColor= "primary",
+    elevation= true,
     style = {}
 }: IElevatedButton) => {
 
@@ -26,9 +33,14 @@ const ElevatedButton = ({
             activeOpacity={0.75}
             disabled={disabled}
             onPress={action}
-            style={[styles.container, { backgroundColor: colors.primary, shadowColor: colors.black, height: height }, style]}
+            style={[
+                styles.container,
+                { backgroundColor: colors[bgColor], height: height },
+                elevation ? { ...styles.shadow, shadowColor: colors.black, } : {},
+                style
+            ]}
         >
-            <P color="white" size={20} weight="bold" align="center">{title}</P>
+            <P color={titleColor} size={16} weight="bold" align="center">{title}</P>
         </TouchableOpacity>
     )
 }
@@ -39,6 +51,8 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         justifyContent: "center",
         alignItems: "center",
+    },
+    shadow: {
         shadowOffset: {
             width: 0,
             height: 5,
