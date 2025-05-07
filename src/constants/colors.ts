@@ -11,6 +11,8 @@ export const lightTheme: IColors = {
     text: "#000000",
     backButtonBg: "rgba(0,0,0,0.04)",
     backIconBg: "#000000",
+    inputText: "#383838",
+    inputBorder: "#000000",
 }
 
 export const darkTheme: IColors = {
@@ -23,5 +25,7 @@ export const darkTheme: IColors = {
     darkGrey: "#343434",
     text: "#ffffff",
     backButtonBg: "rgba(255,255,255,0.03)",
-    backIconBg: "#ffffff"
+    backIconBg: "#ffffff",
+    inputText: "#a7a7a7",
+    inputBorder: "#ffffff",
 }

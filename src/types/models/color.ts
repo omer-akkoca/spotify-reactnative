@@ -9,6 +9,8 @@ interface IColors{
     text: string,
     backButtonBg: string,
     backIconBg: string,
+    inputText: string,
+    inputBorder: string,
 }
 
 export default IColors;
