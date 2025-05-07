@@ -5,23 +5,19 @@ import { useTheme } from "../providers";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { abh } from "../constants/responsive";
 import HorizontalLayout from "./horizontal_layout";
-import P from "./p";
 import { useNavigation } from "@react-navigation/native";
+import { LeftChevronIcon } from "../../assets/icons";
 
 type IAppBar = {
-    title: string,
-    titleColor?: colorsType,
-    backIconColor?: colorsType,
+    center?: React.JSX.Element,
     bgColor?: colorsType,
     leading?: React.JSX.Element,
     actions?: React.JSX.Element[]
 }
 
 const AppBar = ({
-    title = "A Title",
-    titleColor= "white",
-    backIconColor= "white",
-    bgColor = "white",
+    center= <></>,
+    bgColor = "transparent",
     leading = undefined,
     actions = [],
 }: IAppBar): React.JSX.Element => {
@@ -39,14 +35,15 @@ const AppBar = ({
                             <TouchableOpacity
                                 onPress={() => goBack()}
                                 activeOpacity={0.75}
+                                style={[styles.leadingButton, { backgroundColor: colors.backButtonBg }]}
                             >
-                                {/*<BackArrowIcon color={backIconColor} width={16} height={16} />*/}
+                                <LeftChevronIcon color={colors.backIconBg} width={16} height={16} />
                             </TouchableOpacity>
                         )
                     }
                 </View>
                 <View style={styles.center}>
-                    <P color={titleColor} size={18} align="center" weight="bold">{title}</P>
+                    {center}
                 </View>
                 <View style={styles.actions}>
                     {
@@ -77,6 +74,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "flex-start",
+    },
+    leadingButton:{
+        width: 35,
+        height: 35,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 99,
     },
     center: {
         flex: 2,
