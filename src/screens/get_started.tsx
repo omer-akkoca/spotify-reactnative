@@ -6,14 +6,16 @@ import { width } from "../constants/responsive";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationProp } from "../types";
+import { useTheme } from "../providers";
 
 const GetStartedScreen = () => {
 
     const { navigate } = useNavigation<NavigationProp>()
     const { bottom } = useSafeAreaInsets()
+    const { colors } = useTheme()
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: colors.pageBg }}>
             <ImageBackground
                 source={getStartedBg}
                 resizeMode="cover"
