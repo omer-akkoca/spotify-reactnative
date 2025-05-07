@@ -1,4 +1,82 @@
-import { Svg, Defs, G, Path, SvgProps } from "react-native-svg";
+import { Svg, Defs, G, Path, SvgProps, Circle } from "react-native-svg";
+
+export const SunIcon = (props: SvgProps) => (
+    <Svg
+        width="800px"
+        height="800px"
+        viewBox="0 0 24 24"
+        fill="none"
+        {...props}
+    >
+        <Circle cx={12} cy={12} r={5} stroke={props.color} strokeWidth={1} />
+        <Path
+            d="M12 2V4"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M12 20V22"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M4 12L2 12"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M22 12L20 12"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M19.7778 4.22266L17.5558 6.25424"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M4.22217 4.22266L6.44418 6.25424"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M6.44434 17.5557L4.22211 19.7779"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+        <Path
+            d="M19.7778 19.7773L17.5558 17.5551"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+        />
+    </Svg>
+);
+
+export const MoonIcon = (props: SvgProps) => (
+    <Svg
+        width="800px"
+        height="800px"
+        viewBox="0 0 24 24"
+        fill="none"
+        {...props}
+    >
+        <Path
+            d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z"
+            stroke={props.color}
+            strokeWidth={1}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </Svg>
+);
 
 export const SpotifyLogo = (props: SvgProps) => (
     <Svg

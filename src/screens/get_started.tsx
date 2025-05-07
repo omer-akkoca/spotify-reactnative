@@ -4,9 +4,12 @@ import { getStartedBg, spotifyLogo } from "../../assets/images";
 import { CImage, ElevatedButton, P, Space } from "../components";
 import { width } from "../constants/responsive";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProp } from "../types";
 
 const GetStartedScreen = () => {
 
+    const { navigate } = useNavigation<NavigationProp>()
     const { bottom } = useSafeAreaInsets()
 
     return (
@@ -31,11 +34,11 @@ const GetStartedScreen = () => {
                     </P>
                     <Space height={21} />
                     <ElevatedButton
-                        action={() => null}
+                        action={() => navigate("choose_mode")}
                         text="Get Started"
-                        style={{ height: 85, justifyContent: "center", alignItems: "center" }}
+                        style={{ height: 80, justifyContent: "center", alignItems: "center" }}
                     />
-                    <Space height={bottom + 16} />
+                    <Space height={bottom + 32} />
                 </View>
             </ImageBackground>
         </View>
