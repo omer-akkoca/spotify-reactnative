@@ -4,9 +4,12 @@ import { useTheme } from "../providers";
 import { BottomPatternIcon, TopPatternIcon } from "../../assets/icons";
 import { AppBar, CImage, ElevatedButton, HorizontalLayout, P, Space } from "../components";
 import { authBg, spotifyLogo } from "../../assets/images";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProp } from "../types";
 
 const SignUpOrSignInScreen = () => {
 
+    const { navigate } = useNavigation<NavigationProp>()
     const { colors } = useTheme()
 
     return (
@@ -30,7 +33,7 @@ const SignUpOrSignInScreen = () => {
                 <Space height={30} />
                 <HorizontalLayout gap={20}>
                     <ElevatedButton
-                        action={() => null}
+                        action={() => navigate("sign_up")}
                         title="Register"
                         style={{ flex: 1 }}
                     />

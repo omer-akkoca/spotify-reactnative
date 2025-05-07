@@ -5,6 +5,7 @@ export type RootStackParamList = {
   get_started: undefined,
   choose_mode: undefined,
   sign_up_or_sign_in: undefined,
+  sign_up: undefined,
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
