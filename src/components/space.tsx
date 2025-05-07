@@ -2,8 +2,8 @@ import React from "react";
 import { View } from "react-native";
 
 type spaceType = {
-    height?: number,
-    width?: number,
+    height?: number | "100%",
+    width?: number | "100%",
 }
 
 const Space = ({
@@ -11,7 +11,11 @@ const Space = ({
     width= 0,
 }: spaceType) => {
     return(
-        <View style={{ height, width }}/>
+        <View style={[
+            { height: height === "100%" ? 0 : height },
+            { width: width === "100%" ? 0 : width },
+            height === "100%" || width === "100%" ? { flex: 1 } : {}
+        ]}/>
     )
 }
 
