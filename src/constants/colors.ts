@@ -7,6 +7,7 @@ export const lightTheme: IColors = {
     primary: "#42c83c",
     pageBg: "#f2f2f2",
     grey: "#bebebe",
+    darkGrey: "#343434",
 }
 
 export const darkTheme: IColors = {
@@ -15,5 +16,6 @@ export const darkTheme: IColors = {
     black: "#000000",
     primary: "#42c83c",
     pageBg: "#0d0c0c",
-    grey: "#343434",
+    grey: "#bebebe",
+    darkGrey: "#343434",
 }

@@ -5,6 +5,7 @@ interface IColors{
     primary: string,
     pageBg: string,
     grey: string,
+    darkGrey: string,
 }
 
 export default IColors;
