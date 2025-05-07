@@ -4,9 +4,12 @@ import { useTheme } from "../providers";
 import { AppBar, CImage, ElevatedButton, HorizontalLayout, Input, P, Space } from "../components";
 import { spotifyLogo } from "../../assets/images";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { NavigationProp } from "../types";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUpScreen = () => {
 
+    const { replace } = useNavigation<NavigationProp>()
     const { colors } = useTheme()
     const { bottom } = useSafeAreaInsets()
 
@@ -45,7 +48,7 @@ const SignUpScreen = () => {
             </View>
             <HorizontalLayout gap={4} justify="center">
                 <P size={14} color="text" align="center">Do you have an account?</P>
-                <Pressable onPress={() => null}> 
+                <Pressable onPress={() => replace("sign_in")}> 
                     <P color="primary" font="satoshi-bold">Sign In!</P>
                 </Pressable>
             </HorizontalLayout>

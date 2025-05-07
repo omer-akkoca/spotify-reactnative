@@ -38,7 +38,7 @@ const SignUpOrSignInScreen = () => {
                         style={{ flex: 1 }}
                     />
                     <ElevatedButton
-                        action={() => null}
+                        action={() => navigate("sign_in")}
                         title="Sign In"
                         titleColor="text"
                         bgColor="transparent"
