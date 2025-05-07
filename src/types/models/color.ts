@@ -6,6 +6,9 @@ interface IColors{
     pageBg: string,
     grey: string,
     darkGrey: string,
+    text: string,
+    backButtonBg: string,
+    backIconBg: string,
 }
 
 export default IColors;

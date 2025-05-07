@@ -8,6 +8,9 @@ export const lightTheme: IColors = {
     pageBg: "#f2f2f2",
     grey: "#bebebe",
     darkGrey: "#343434",
+    text: "#000000",
+    backButtonBg: "rgba(0,0,0,0.04)",
+    backIconBg: "#000000",
 }
 
 export const darkTheme: IColors = {
@@ -18,4 +21,7 @@ export const darkTheme: IColors = {
     pageBg: "#0d0c0c",
     grey: "#bebebe",
     darkGrey: "#343434",
+    text: "#ffffff",
+    backButtonBg: "rgba(255,255,255,0.03)",
+    backIconBg: "#ffffff"
 }
