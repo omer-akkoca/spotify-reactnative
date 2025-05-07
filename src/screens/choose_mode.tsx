@@ -6,9 +6,12 @@ import { width } from "../constants/responsive";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MoonIcon, SunIcon } from "../../assets/icons";
 import { useTheme } from "../providers";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProp } from "../types";
 
 const ChooseModeScreen = () => {
 
+    const { navigate } = useNavigation<NavigationProp>()
     const { colors, setTheme } = useTheme()
     const { bottom } = useSafeAreaInsets()
 
@@ -53,7 +56,7 @@ const ChooseModeScreen = () => {
                     </HorizontalLayout>
                     <Space height={50} />
                     <ElevatedButton
-                        action={() => null}
+                        action={() => navigate("sign_up_or_sign_in")}
                         title="Continue"
                     />
                     <Space height={bottom + 32} />
