@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { useTheme } from "../providers";
-import { BottomPatternIcon, TopPatternIcon } from "../../assets/icons";
-import { AppBar, CImage, ElevatedButton, HorizontalLayout, P, Space } from "../components";
-import { authBg, spotifyLogo } from "../../assets/images";
+import { useTheme } from "../../providers";
+import { BottomPatternIcon, TopPatternIcon } from "../../../assets/icons";
+import { AppBar, CImage, ElevatedButton, HorizontalLayout, P, Space } from "../../components";
+import { authBg, spotifyLogo } from "../../../assets/images";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../types";
+import { NavigationProp } from "../../types";
 
 const SignUpOrSignInScreen = () => {
 

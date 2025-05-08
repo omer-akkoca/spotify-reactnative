@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Pressable, View } from "react-native";
-import { AppBar, CImage, ElevatedButton, HorizontalLayout, Input, P, Space } from "../components";
-import { spotifyLogo } from "../../assets/images";
-import { useTheme } from "../providers";
+import { AppBar, CImage, ElevatedButton, HorizontalLayout, Input, P, Space } from "../../components";
+import { spotifyLogo } from "../../../assets/images";
+import { useTheme } from "../../providers";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../types";
+import { NavigationProp } from "../../types";
 
 const SignInScreen = () => {
 

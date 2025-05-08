@@ -2,8 +2,7 @@ import React from "react";
 import pages from "../constants/pages";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from "../types";
-import { ChooseModeScreen, GetStartedScreen, SignInScreen, SignupOrSignInScreen, SplashScreen } from "../screens";
-import SignUpScreen from "../screens/sign_up";
+import { HomeScreen } from "../screens";
 
 const Stack = createNativeStackNavigator<RootStackParamList, "AppStack">();
 
@@ -11,17 +10,12 @@ const AppStack = () => {
     return (
         <Stack.Navigator
             id="AppStack"
-            initialRouteName={pages.splash}
+            initialRouteName={pages.home}
             screenOptions={{
                 headerShown: false,
             }}
         >
-            <Stack.Screen name={pages.splash} component={SplashScreen} />
-            <Stack.Screen name={pages.get_started} component={GetStartedScreen} />
-            <Stack.Screen name={pages.choose_mode} component={ChooseModeScreen} />
-            <Stack.Screen name={pages.sign_up_or_sign_in} component={SignupOrSignInScreen} />
-            <Stack.Screen name={pages.sign_up} component={SignUpScreen} />
-            <Stack.Screen name={pages.sign_in} component={SignInScreen} />
+            <Stack.Screen name={pages.home} component={HomeScreen}/>
         </Stack.Navigator>
     )
 }

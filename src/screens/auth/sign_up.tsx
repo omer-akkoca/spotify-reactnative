@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Pressable, View } from "react-native";
-import { useTheme } from "../providers";
-import { AppBar, CImage, ElevatedButton, HorizontalLayout, Input, P, Space } from "../components";
-import { spotifyLogo } from "../../assets/images";
+import { useTheme } from "../../providers";
+import { AppBar, CImage, ElevatedButton, HorizontalLayout, Input, P, Space } from "../../components";
+import { spotifyLogo } from "../../../assets/images";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { NavigationProp } from "../types";
+import { NavigationProp } from "../../types";
 import { useNavigation } from "@react-navigation/native";
 
 const SignUpScreen = () => {

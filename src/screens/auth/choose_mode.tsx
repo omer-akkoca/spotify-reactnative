@@ -1,13 +1,13 @@
 import React from "react";
 import { ImageBackground, StyleSheet, TouchableOpacity, View } from "react-native";
-import { chooseModeBg, spotifyLogo } from "../../assets/images";
-import { CImage, ElevatedButton, HorizontalLayout, P, Space } from "../components";
-import { width } from "../constants/responsive";
+import { chooseModeBg, spotifyLogo } from "../../../assets/images";
+import { CImage, ElevatedButton, HorizontalLayout, P, Space } from "../../components";
+import { width } from "../../constants/responsive";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { MoonIcon, SunIcon } from "../../assets/icons";
-import { useTheme } from "../providers";
+import { MoonIcon, SunIcon } from "../../../assets/icons";
+import { useTheme } from "../../providers";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../types";
+import { NavigationProp } from "../../types";
 
 const ChooseModeScreen = () => {
 

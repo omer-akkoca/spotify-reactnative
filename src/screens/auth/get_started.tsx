@@ -1,12 +1,12 @@
 import React from "react";
 import { ImageBackground, View } from "react-native";
-import { getStartedBg, spotifyLogo } from "../../assets/images";
-import { CImage, ElevatedButton, P, Space } from "../components";
-import { width } from "../constants/responsive";
+import { getStartedBg, spotifyLogo } from "../../../assets/images";
+import { CImage, ElevatedButton, P, Space } from "../../components";
+import { width } from "../../constants/responsive";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../types";
-import { useTheme } from "../providers";
+import { NavigationProp } from "../../types";
+import { useTheme } from "../../providers";
 
 const GetStartedScreen = () => {
 

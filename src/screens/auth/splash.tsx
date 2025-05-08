@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { View } from "react-native";
-import { CImage } from "../components";
-import { spotifyLogo } from "../../assets/images";
-import { width } from "../constants/responsive";
+import { CImage } from "../../components";
+import { spotifyLogo } from "../../../assets/images";
+import { width } from "../../constants/responsive";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../types";
-import { useTheme } from "../providers";
+import { NavigationProp } from "../../types";
+import { useTheme } from "../../providers";
 
 const SplashScreen = () => {
 
