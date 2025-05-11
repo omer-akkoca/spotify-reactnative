@@ -23,6 +23,7 @@ const ThemeContext = createContext<ThemeContextType>({
 
 const ThemeProvider = ({ children }: ThemeProviderProps): React.JSX.Element => {
 
+    const [loading, setLoading] = useState(false);
     const [theme, setTheme] = useState<themeTypes>("light")
 
     const colors = useMemo(() => theme === "light" ? lightTheme : darkTheme, [theme])
@@ -33,8 +34,10 @@ const ThemeProvider = ({ children }: ThemeProviderProps): React.JSX.Element => {
 
     useEffect(() => {
         const boot = async () => {
+            setLoading(true)
             const storedTheme = await getAsyncData<themeTypes>({ key: "theme" })
             storedTheme ? setTheme(storedTheme) : setTheme("light")
+            setLoading(false)
         }
         boot();
     }, [])
@@ -49,7 +52,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps): React.JSX.Element => {
 
     return(
         <ThemeContext.Provider value={{ theme, setTheme, colors, toggleTheme }}>
-            {children}
+            {loading ? <></> : children}
         </ThemeContext.Provider>
     )
 }

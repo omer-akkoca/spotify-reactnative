@@ -5,7 +5,8 @@ import { spotifyLogo } from "../../../assets/images";
 import { useTheme } from "../../providers";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../../types";
+import { ISignInReq, NavigationProp } from "../../types";
+import { signIn } from "../../services";
 
 const SignInScreen = () => {
 
@@ -15,6 +16,14 @@ const SignInScreen = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const handleSignIn = () => {
+        const signInReq: ISignInReq = {
+            email: email,
+            password: password
+        }
+        signIn(signInReq);
+    }
 
     return(
         <View style={{ flex: 1, backgroundColor: colors.pageBg }}>
@@ -36,7 +45,7 @@ const SignInScreen = () => {
             />
             <Space height={20}/>
             <ElevatedButton
-                action={() => null}
+                action={() => handleSignIn()}
                 title="Sign In"
             />
         </View>

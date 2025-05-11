@@ -12,4 +12,5 @@ type colorsType = keyof IColors
 type fontFamilyType = keyof IFontFamily
 type stackTypes = keyof RootStackParamList
 
+export * from "./request/auth"
 export type { IP, IColors, IImage, alignType, transformType, fontWeight, colorsType, RootStackParamList, stackTypes, NavigationProp, fontFamilyType }

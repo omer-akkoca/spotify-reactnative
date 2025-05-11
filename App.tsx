@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider } from "./src/providers";
+import { AuthProvider, ThemeProvider } from "./src/providers";
 import RootNavigation from "./src/navigation";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 
@@ -10,10 +10,12 @@ const App = () => {
         SystemNavigationBar.setNavigationColor('translucent');
     }, [])
 
-    return(
+    return (
         <SafeAreaProvider>
             <ThemeProvider>
-                <RootNavigation/>
+                <AuthProvider>
+                    <RootNavigation />
+                </AuthProvider>
             </ThemeProvider>
         </SafeAreaProvider>
     )

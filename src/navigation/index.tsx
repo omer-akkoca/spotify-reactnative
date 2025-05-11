@@ -2,14 +2,16 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import AppStack from "./app";
 import { StatusBar } from "react-native";
-import { useTheme } from "../providers";
+import { useAuth, useTheme } from "../providers";
 import AuthStack from "./auth";
+import { LoadingScreen } from "../screens";
 
 const RootNavigation = () => {
 
     const { theme } = useTheme()
+    const { user, loading } = useAuth()
 
-    const user = null
+    if (loading) return <LoadingScreen/>
 
     return(
         <NavigationContainer>

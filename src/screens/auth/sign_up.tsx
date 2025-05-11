@@ -4,8 +4,9 @@ import { useTheme } from "../../providers";
 import { AppBar, CImage, ElevatedButton, HorizontalLayout, Input, P, Space } from "../../components";
 import { spotifyLogo } from "../../../assets/images";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { NavigationProp } from "../../types";
+import { ISignUpReq, NavigationProp } from "../../types";
 import { useNavigation } from "@react-navigation/native";
+import { signUp } from "../../services";
 
 const SignUpScreen = () => {
 
@@ -16,6 +17,15 @@ const SignUpScreen = () => {
     const [fullName, setFullName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const handleSignUp = () => {
+        const signUpReq: ISignUpReq = {
+            email: email,
+            fullName: fullName,
+            password: password
+        }
+        signUp(signUpReq);
+    }
 
     return(
         <View style={{ flex: 1, backgroundColor: colors.pageBg }}>
@@ -42,7 +52,7 @@ const SignUpScreen = () => {
                 />
                 <Space height={20}/>
                 <ElevatedButton
-                    action={() => null}
+                    action={() => handleSignUp()}
                     title="Create Account"
                 />
             </View>
