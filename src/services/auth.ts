@@ -1,5 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword, FirebaseAuthTypes, signInWithEmailAndPassword, signOut as firebaseSignOut  } from '@react-native-firebase/auth';
 import { ISignInReq, ISignUpReq } from '../types';
+import { addDocument } from './firestore';
 
 export const signUp = async (signUpReq: ISignUpReq): Promise<FirebaseAuthTypes.User | null> => {
     try {
@@ -8,7 +9,8 @@ export const signUp = async (signUpReq: ISignUpReq): Promise<FirebaseAuthTypes.U
             getAuth(),
             email,
             password,
-        );
+        )
+        await addDocument({ name: fullName, email: email });
         return userCredential.user;
     } catch (error: any) {
         switch (error.code) {
