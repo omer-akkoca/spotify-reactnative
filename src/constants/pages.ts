@@ -7,6 +7,7 @@ const pages: {
     sign_up_or_sign_in: stackTypes,
     sign_up: stackTypes,
     sign_in: stackTypes,
+    root: stackTypes,
     home: stackTypes,
 } = {
     splash: "splash",
@@ -15,6 +16,7 @@ const pages: {
     sign_up_or_sign_in: "sign_up_or_sign_in",
     sign_up: "sign_up",
     sign_in: "sign_in",
+    root: "root",
     home: "home",
 }
 

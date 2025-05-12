@@ -2,7 +2,7 @@ import React from "react";
 import pages from "../constants/pages";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from "../types";
-import { HomeScreen } from "../screens";
+import { HomeScreen, RootScreen } from "../screens";
 
 const Stack = createNativeStackNavigator<RootStackParamList, "AppStack">();
 
@@ -15,6 +15,7 @@ const AppStack = () => {
                 headerShown: false,
             }}
         >
+            <Stack.Screen name={pages.root} component={RootScreen}/>
             <Stack.Screen name={pages.home} component={HomeScreen}/>
         </Stack.Navigator>
     )
