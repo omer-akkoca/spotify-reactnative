@@ -18,3 +18,20 @@ export const fetchNewsSongs = async (): Promise<ISong[]> => {
         throw error;
     }
 }
+
+export const fetchPlayList = async (): Promise<ISong[]> => {
+    try {
+        const db = getFirestore()
+        const colRef = collection(db, "songs")
+        const orderRef = orderBy("releaseDate", "asc")
+        const songsQuery = query(colRef, orderRef);
+        const snapshot = await getDocs(songsQuery)
+        const data = snapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() } as ISong
+        })
+        return data;
+    } catch (error) {
+        console.error('Error fetching play list:', error);
+        throw error;
+    }
+}
