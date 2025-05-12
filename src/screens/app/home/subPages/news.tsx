@@ -1,9 +1,9 @@
 import React from "react";
-import { P, Space } from "../../../components";
+import { P, Space } from "../../../../components";
 import { ActivityIndicator, FlatList, Image, StyleSheet, TouchableOpacity, View } from "react-native";
-import { useTheme } from "../../../providers";
-import { useNewsSongs } from "../../../hooks";
-import { PlayIcon } from "../../../../assets/icons";
+import { useTheme } from "../../../../providers";
+import { useNewsSongs } from "../../../../hooks";
+import { PlayIcon } from "../../../../../assets/icons";
 
 const News = () => {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { P } from "../../../components";
+import { P } from "../../../../components";
 import { View } from "react-native";
 
 const Video = () => {

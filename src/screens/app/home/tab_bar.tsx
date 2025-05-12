@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useRef, useState } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
-import News from "./news";
-import Video from "./video";
-import Artists from "./artists";
-import Podcast from "./podcast";
+import News from "./subPages/news";
+import Video from "./subPages/video";
+import Artists from "./subPages/artists";
+import Podcast from "./subPages/podcast";
 import { useTheme } from "../../../providers";
 import { P, Space } from "../../../components";
 
