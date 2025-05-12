@@ -7,7 +7,7 @@ import Podcast from "./podcast";
 import { useTheme } from "../../../providers";
 import { P, Space } from "../../../components";
 
-const tabBars = ["news", "video", "artists", "Podcast", "Games", "Albums"]
+const tabBars = ["news", "video", "artists", "Podcast"]
 
 type TabBarContextType = {
     activeIndex: number,
