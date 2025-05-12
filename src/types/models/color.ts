@@ -11,6 +11,8 @@ interface IColors{
     backIconBg: string,
     inputText: string,
     inputBorder: string,
+    cardPlayBg: string,
+    cardPlayIcon: string,
 }
 
 export default IColors;
