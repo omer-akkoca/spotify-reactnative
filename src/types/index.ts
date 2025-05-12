@@ -3,6 +3,7 @@ import IImage from "./views/image"
 import IColors from "./models/color"
 import { RootStackParamList, NavigationProp } from "./navigation"
 import { IFontFamily } from "./models/font"
+import { ISong } from "./models/song"
 
 type alignType = "auto" | "left" | "justify" | "right" | "center"
 type transformType = "capitalize" | "lowercase" | "none" | "uppercase"
@@ -13,4 +14,9 @@ type fontFamilyType = keyof IFontFamily
 type stackTypes = keyof RootStackParamList
 
 export * from "./request/auth"
-export type { IP, IColors, IImage, alignType, transformType, fontWeight, colorsType, RootStackParamList, stackTypes, NavigationProp, fontFamilyType }
+export type {
+    IP, IImage,
+    alignType, transformType, fontWeight, colorsType, fontFamilyType,
+    RootStackParamList, stackTypes, NavigationProp,
+    IColors, IFontFamily, ISong,
+}
