@@ -1,4 +1,4 @@
-import { IFontFamily } from "../types/models/font";
+import { IFontFamily } from "../types";
 
 export const fonts: IFontFamily = {
     "satoshi-black": "Satoshi-Black",
