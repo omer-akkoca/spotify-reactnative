@@ -1,4 +1,5 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ISong } from "./models/song";
 
 export type RootStackParamList = {
   splash: undefined,
@@ -9,6 +10,7 @@ export type RootStackParamList = {
   sign_in: undefined,
   root: undefined,
   home: undefined,
+  song_player: { song: ISong }
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;

@@ -9,6 +9,7 @@ const pages: {
     sign_in: stackTypes,
     root: stackTypes,
     home: stackTypes,
+    song_player: stackTypes,
 } = {
     splash: "splash",
     get_started: "get_started",
@@ -18,6 +19,7 @@ const pages: {
     sign_in: "sign_in",
     root: "root",
     home: "home",
+    song_player: "song_player",
 }
 
 export default pages;

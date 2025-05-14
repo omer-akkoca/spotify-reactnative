@@ -8,9 +8,12 @@ import { width } from "../../../constants/responsive";
 import { HomeTabBar } from "./tab_bar";
 import { usePlaylist } from "../../../hooks";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProp } from "../../../types";
 
 const HomeScreen = () => {
 
+    const { navigate } = useNavigation<NavigationProp>()
     const { colors, toggleTheme } = useTheme()
     const { bottom } = useSafeAreaInsets()
 
@@ -23,10 +26,10 @@ const HomeScreen = () => {
             <AppBar
                 bgColor="pageBg"
                 center={<CImage local={spotifyLogo} height={35} width={100} mode="contain" />}
-                leading={<SearchIcon color={colors.text} width={25} height={25} />}
+                leading={<SearchIcon color={colors.text} width={20} height={20} />}
                 actions={[
                     <TouchableOpacity onPress={() => toggleTheme()}>
-                        <VerticalDotsIcon color={colors.text} width={25} height={25} />
+                        <VerticalDotsIcon color={colors.text} width={20} height={20} />
                     </TouchableOpacity>,
                 ]}
             />
@@ -61,30 +64,35 @@ const HomeScreen = () => {
                             ItemSeparatorComponent={() => <Space height={16} />}
                             renderItem={({ item }) => {
                                 return (
-                                    <HorizontalLayout>
-                                        <TouchableOpacity
-                                            activeOpacity={0.75}
-                                            style={{ ...styles.playListPlayButton, backgroundColor: colors.cardPlayBg }}
-                                            onPress={() => null}
-                                        >
-                                            <PlayIcon color={colors.cardPlayIcon} width={15} height={15} />
-                                        </TouchableOpacity>
-                                        <Space width={16} />
-                                        <View>
-                                            <P color="text" size={16} weight="bold">{item.title}</P>
-                                            <Space height={4} />
-                                            <P color="text" size={11} weight="400">{item.artist}</P>
-                                        </View>
-                                        <Space width={"100%"} />
-                                        <P color="text" spacing={1}>{item.duration.toFixed(2).toString().replace(".", ":")}</P>
-                                        <Space width={16} />
-                                        <TouchableOpacity
-                                            activeOpacity={0.75}
-                                            onPress={() => null}
-                                        >
-                                            <HeartIcon color={colors.cardPlayIcon} width={20} height={20} />
-                                        </TouchableOpacity>
-                                    </HorizontalLayout>
+                                    <TouchableOpacity
+                                        activeOpacity={0.75}
+                                        onPress={() => navigate("song_player", { song: item })}
+                                    >
+                                        <HorizontalLayout>
+                                            <TouchableOpacity
+                                                activeOpacity={0.75}
+                                                style={{ ...styles.playListPlayButton, backgroundColor: colors.cardPlayBg }}
+                                                onPress={() => null}
+                                            >
+                                                <PlayIcon color={colors.cardPlayIcon} width={15} height={15} />
+                                            </TouchableOpacity>
+                                            <Space width={16} />
+                                            <View>
+                                                <P color="text" size={16} weight="bold">{item.title}</P>
+                                                <Space height={4} />
+                                                <P color="text" size={11} weight="400">{item.artist}</P>
+                                            </View>
+                                            <Space width={"100%"} />
+                                            <P color="text" spacing={1}>{item.duration.toFixed(2).toString().replace(".", ":")}</P>
+                                            <Space width={16} />
+                                            <TouchableOpacity
+                                                activeOpacity={0.75}
+                                                onPress={() => null}
+                                            >
+                                                <HeartIcon color={colors.cardPlayIcon} width={20} height={20} />
+                                            </TouchableOpacity>
+                                        </HorizontalLayout>
+                                    </TouchableOpacity>
                                 )
                             }}
                         />
