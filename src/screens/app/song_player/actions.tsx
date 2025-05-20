@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { HorizontalLayout, P, Space } from "../../../components";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import Slider from "@react-native-community/slider";
@@ -6,30 +6,49 @@ import { useTheme } from "../../../providers";
 import { ISong } from "../../../types";
 import { width } from "../../../constants/responsive";
 import { LoopIcon, NextMusicIcon, PauseIcon, PlayIcon, PreviousMusicIcon, ShuffleIcon } from "../../../../assets/icons";
+import TrackPlayer, { State, useProgress, useIsPlaying, Event } from 'react-native-track-player';
+import { formatDuration, secondsToMinutes } from "../../../utils/song";
 
 const SongPlayerActions = ({ song }: { song: ISong }) => {
 
     const { colors } = useTheme()
-
-    const [isPlaying, setIsPlaying] = useState(false)
+    const progress = useProgress()
+    const { playing } = useIsPlaying()
 
     useEffect(() => {
-
+        setupAddSong();
+        return () => {
+            TrackPlayer.reset();
+        }
     }, [song])
 
-    const formatDuration = (duration: number) => {
-        const splited = duration.toFixed(2).toString().split(".");
-        const minutes = splited[0].padStart(2, "0")
-        const seconds = splited[1].padStart(2, "0")
-        return `${minutes}:${seconds}`;
+    const setupAddSong = async () => {
+        TrackPlayer.add({
+            url: song.song,
+            title: song.title,
+            artist: song.artist,
+            duration: song.duration * 60,
+            artwork: song.cover,
+        })
+        TrackPlayer.play()
+    }
+
+    const playOrPause = async () => {
+        const { state } = await TrackPlayer.getPlaybackState();
+        if (state === State.Playing) {
+            TrackPlayer.pause();
+        } else {
+            TrackPlayer.play();
+        }
     }
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <View>
                 <Slider
+                    value={progress.position}
                     minimumValue={0}
-                    maximumValue={song.duration}
+                    maximumValue={progress.duration}
                     minimumTrackTintColor={colors.text}
                     maximumTrackTintColor={colors.darkGrey}
                     thumbTintColor={colors.text}
@@ -37,8 +56,8 @@ const SongPlayerActions = ({ song }: { song: ISong }) => {
                 />
                 <Space height={8} />
                 <HorizontalLayout justify="space-between" customStyle={{ paddingHorizontal: 16 }}>
-                    <P color="text">{formatDuration(0.0)}</P>
-                    <P color="darkGrey">{formatDuration(song.duration)}</P>
+                    <P color="text">{formatDuration(secondsToMinutes(progress.position))}</P>
+                    <P color="darkGrey">{formatDuration(secondsToMinutes(progress.duration))}</P>
                 </HorizontalLayout>
             </View>
             <Space height={16} />
@@ -52,10 +71,10 @@ const SongPlayerActions = ({ song }: { song: ISong }) => {
                 <TouchableOpacity
                     activeOpacity={0.75}
                     style={{ ...styles.pauseAndPlayButton, backgroundColor: colors.primary }}
-                    onPress={() => setIsPlaying(e => !e)}
+                    onPress={playOrPause}
                 >
                     {
-                        isPlaying
+                        playing
                             ? <PauseIcon color={colors.white} width={25} height={25} />
                             : <PlayIcon color={colors.white} width={25} height={25} />
                     }

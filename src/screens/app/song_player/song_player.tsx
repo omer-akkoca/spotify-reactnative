@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Image, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../../providers";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../../types";
 import { AppBar, HorizontalLayout, P, Space } from "../../../components";
-import { BorderedHeartIcon, LoopIcon, NextMusicIcon, PauseIcon, PlayIcon, PreviousMusicIcon, ShuffleIcon, VerticalDotsIcon } from "../../../../assets/icons";
+import { BorderedHeartIcon, VerticalDotsIcon } from "../../../../assets/icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Slider from "@react-native-community/slider";
-import { width } from "../../../constants/responsive";
 import SongPlayerActions from "./actions";
 
 const SongPlayerScreen = () => {
