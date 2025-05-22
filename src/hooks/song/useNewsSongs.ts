@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchNewsSongs } from "../../services/song";
+import { fetchNewsSongs } from "../../services";
 import { ISong } from "../../types";
 
 interface IUseNewsSongs {

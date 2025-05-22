@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchFavoriteSongs } from "../../services/song";
+import { fetchFavoriteSongs } from "../../services";
 import { IFavoriteSong } from "../../types";
 import { useAuth } from "../../providers";
 import { useAppDispatch } from "../../types/store";

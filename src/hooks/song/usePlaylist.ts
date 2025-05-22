@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchPlayList } from "../../services/song";
+import { fetchPlayList } from "../../services";
 import { ISong } from "../../types";
 
 interface IUsePlaylist {

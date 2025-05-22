@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { addFavoriteSong, removeFavoriteSong } from "../../services/song";
+import { addFavoriteSong, removeFavoriteSong } from "../../services";
 import { useAuth } from "../../providers";
 import { useAppDispatch, useAppSelector } from "../../types/store";
 import { addFavoriteSongToStore, isFavoriteSong, removeFavoriteSongFromStore } from "../../store/slices/favorite_songs";
