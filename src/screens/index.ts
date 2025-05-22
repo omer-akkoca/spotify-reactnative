@@ -10,8 +10,9 @@ import SignInScreen from "./auth/sign_in.tsx";
 import RootScreen from "./app/root.tsx";
 import HomeScreen from "./app/home/home.tsx";
 import SongPlayerScreen from "./app/song_player/song_player.tsx";
+import ProfileScreen from "./app/profile/profile.tsx";
 
 export {
     LoadingScreen, SplashScreen, GetStartedScreen, ChooseModeScreen, SignupOrSignInScreen, SignupScreen, SignInScreen,
-    HomeScreen, RootScreen, SongPlayerScreen,
+    HomeScreen, RootScreen, SongPlayerScreen, ProfileScreen,
 }

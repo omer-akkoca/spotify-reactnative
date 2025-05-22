@@ -10,6 +10,7 @@ const pages: {
     root: stackTypes,
     home: stackTypes,
     song_player: stackTypes,
+    profile: stackTypes,
 } = {
     splash: "splash",
     get_started: "get_started",
@@ -20,6 +21,7 @@ const pages: {
     root: "root",
     home: "home",
     song_player: "song_player",
+    profile: "profile",
 }
 
 export default pages;

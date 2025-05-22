@@ -1,4 +1,4 @@
-import { collection, getDocs, getFirestore, orderBy, query, limit, Timestamp, addDoc, where } from "@react-native-firebase/firestore"
+import { collection, getDocs, getFirestore, orderBy, query, limit, Timestamp, addDoc, where, getDoc, doc, } from "@react-native-firebase/firestore"
 import { IFavoriteSong, ISong } from "../types"
 
 export const fetchNewsSongs = async (): Promise<ISong[]> => {
@@ -75,6 +75,23 @@ export const removeFavoriteSong = async (userId: string, songId: string) => {
         await docRef.delete()
     } catch (error) {
         console.error('Error fetching in add favorite song:', error);
+        throw error;
+    }
+}
+
+export const fetchFavoriteSongWithDetails = async (favoriteSongs: IFavoriteSong[]): Promise<ISong[]> => {
+    try {
+        const db = getFirestore()
+        const colRef = collection(db, "songs")
+        const promises = favoriteSongs.map(e => getDoc(doc(colRef, e.songId)));
+        const docSnapshots = await Promise.all(promises);
+        const data = docSnapshots
+            .filter(docSnap => docSnap.exists())
+            .map(docSnap => ({ id: docSnap.id, ...docSnap.data() }) as ISong);
+
+        return data;
+    } catch (error) {
+        console.error('Error fetching play list:', error);
         throw error;
     }
 }

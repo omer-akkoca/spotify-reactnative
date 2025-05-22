@@ -13,6 +13,7 @@ interface IColors{
     inputBorder: string,
     cardPlayBg: string,
     cardPlayIcon: string,
+    profileTopSectionBg: string,
 }
 
 export default IColors;

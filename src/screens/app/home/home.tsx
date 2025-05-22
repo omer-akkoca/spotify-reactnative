@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../../providers";
-import { AppBar, CImage, FavoriteButton, HorizontalLayout, P, Space } from "../../../components";
-import { HomeTopCard, PlayIcon, SearchIcon, VerticalDotsIcon } from "../../../../assets/icons";
+import { AppBar, CImage, FavoriteButton, HorizontalLayout, P, Space, UserAvatar } from "../../../components";
+import { HomeTopCard, PlayIcon, SearchIcon } from "../../../../assets/icons";
 import { spotifyLogo, homeArtist } from "../../../../assets/images";
 import { width } from "../../../constants/responsive";
 import { HomeTabBar } from "./tab_bar";
@@ -10,11 +10,10 @@ import { usePlaylist } from "../../../hooks";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { ISong, NavigationProp } from "../../../types";
-import { signOut } from "../../../services";
 
 const HomeScreen = () => {
 
-    const { colors, toggleTheme } = useTheme()
+    const { colors } = useTheme()
     const { bottom } = useSafeAreaInsets()
 
     const { data } = usePlaylist()
@@ -27,11 +26,7 @@ const HomeScreen = () => {
                 bgColor="pageBg"
                 center={<CImage local={spotifyLogo} height={35} width={100} mode="contain" />}
                 leading={<SearchIcon color={colors.text} width={20} height={20} />}
-                actions={[
-                    <TouchableOpacity onPress={() => toggleTheme()}>
-                        <VerticalDotsIcon color={colors.text} width={20} height={20} />
-                    </TouchableOpacity>,
-                ]}
+                actions={[<UserAvatar size={27.5} disabled={false}/>]}
             />
             <View style={{ flex: 1 }}>
                 <ScrollView

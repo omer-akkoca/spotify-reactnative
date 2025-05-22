@@ -15,6 +15,7 @@ export const lightTheme: IColors = {
     inputBorder: "#000000",
     cardPlayBg: "#e6e6e6",
     cardPlayIcon: "#555555",
+    profileTopSectionBg: "#ffffff",
 }
 
 export const darkTheme: IColors = {
@@ -31,5 +32,6 @@ export const darkTheme: IColors = {
     inputText: "#a7a7a7",
     inputBorder: "#ffffff",
     cardPlayBg: "#343434",
-    cardPlayIcon: "#959595"
+    cardPlayIcon: "#959595",
+    profileTopSectionBg: "#343434",
 }

@@ -10,7 +10,8 @@ export type RootStackParamList = {
   sign_in: undefined,
   root: undefined,
   home: undefined,
-  song_player: { song: ISong }
+  song_player: { song: ISong },
+  profile: undefined
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
