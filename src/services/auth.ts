@@ -1,16 +1,19 @@
-import { getAuth, createUserWithEmailAndPassword, FirebaseAuthTypes, signInWithEmailAndPassword, signOut as firebaseSignOut  } from '@react-native-firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, FirebaseAuthTypes, signInWithEmailAndPassword, signOut as firebaseSignOut } from '@react-native-firebase/auth';
 import { ISignInReq, ISignUpReq } from '../types';
-import { addDocument } from './firestore';
+import { collection, doc, getFirestore, setDoc } from '@react-native-firebase/firestore';
 
 export const signUp = async (signUpReq: ISignUpReq): Promise<FirebaseAuthTypes.User | null> => {
     try {
+        const db = getFirestore()
         const { fullName, email, password } = signUpReq
         const userCredential = await createUserWithEmailAndPassword(
             getAuth(),
             email,
             password,
         )
-        await addDocument({ name: fullName, email: email });
+        const collectionRef = collection(db, "users")
+        const docRef = doc(collectionRef, userCredential.user.uid)
+        await setDoc(docRef, { name: fullName, email: email });
         return userCredential.user;
     } catch (error: any) {
         switch (error.code) {
