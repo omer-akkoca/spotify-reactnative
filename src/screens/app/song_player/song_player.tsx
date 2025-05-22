@@ -3,8 +3,8 @@ import { Image, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../../providers";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../../types";
-import { AppBar, HorizontalLayout, P, Space } from "../../../components";
-import { BorderedHeartIcon, VerticalDotsIcon } from "../../../../assets/icons";
+import { AppBar, FavoriteButton, HorizontalLayout, P, Space } from "../../../components";
+import { VerticalDotsIcon } from "../../../../assets/icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import SongPlayerActions from "./actions";
 
@@ -38,12 +38,7 @@ const SongPlayerScreen = () => {
                         <Space height={8} />
                         <P color="text" size={14} weight="400">{song.artist}</P>
                     </View>
-                    <TouchableOpacity
-                        activeOpacity={0.75}
-                        onPress={() => null}
-                    >
-                        <BorderedHeartIcon color={colors.cardPlayIcon} width={25} height={25} />
-                    </TouchableOpacity>
+                    <FavoriteButton song={song} size={25}/>
                 </HorizontalLayout>
                 <Space height={32} />
                 <SongPlayerActions song={song}/>

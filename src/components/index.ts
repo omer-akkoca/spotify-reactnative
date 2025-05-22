@@ -5,5 +5,6 @@ import AppBar from "./app_bar.tsx"
 import Space from "./space.tsx"
 import ElevatedButton from "./elevated_button.tsx"
 import Input from "./input.tsx"
+import FavoriteButton from "./favorite_button.tsx"
 
-export { P, CImage, HorizontalLayout, AppBar, Space,ElevatedButton, Input };
+export { P, CImage, HorizontalLayout, AppBar, Space,ElevatedButton, Input, FavoriteButton };

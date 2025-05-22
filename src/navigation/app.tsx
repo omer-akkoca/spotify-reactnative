@@ -3,10 +3,14 @@ import pages from "../constants/pages";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from "../types";
 import { HomeScreen, RootScreen, SongPlayerScreen } from "../screens";
+import { useFavoriteSongs } from "../hooks";
 
 const Stack = createNativeStackNavigator<RootStackParamList, "AppStack">();
 
 const AppStack = () => {
+
+    const _ = useFavoriteSongs()
+
     return (
         <Stack.Navigator
             id="AppStack"

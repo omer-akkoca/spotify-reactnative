@@ -1,19 +1,19 @@
 import React, { useMemo } from "react";
 import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../../providers";
-import { AppBar, CImage, HorizontalLayout, P, Space } from "../../../components";
-import { HeartIcon, HomeTopCard, PlayIcon, SearchIcon, VerticalDotsIcon } from "../../../../assets/icons";
+import { AppBar, CImage, FavoriteButton, HorizontalLayout, P, Space } from "../../../components";
+import { HomeTopCard, PlayIcon, SearchIcon, VerticalDotsIcon } from "../../../../assets/icons";
 import { spotifyLogo, homeArtist } from "../../../../assets/images";
 import { width } from "../../../constants/responsive";
 import { HomeTabBar } from "./tab_bar";
 import { usePlaylist } from "../../../hooks";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationProp } from "../../../types";
+import { ISong, NavigationProp } from "../../../types";
+import { signOut } from "../../../services";
 
 const HomeScreen = () => {
 
-    const { navigate } = useNavigation<NavigationProp>()
     const { colors, toggleTheme } = useTheme()
     const { bottom } = useSafeAreaInsets()
 
@@ -62,45 +62,46 @@ const HomeScreen = () => {
                             keyExtractor={e => e.id}
                             scrollEnabled={false}
                             ItemSeparatorComponent={() => <Space height={16} />}
-                            renderItem={({ item }) => {
-                                return (
-                                    <TouchableOpacity
-                                        activeOpacity={0.75}
-                                        onPress={() => navigate("song_player", { song: item })}
-                                    >
-                                        <HorizontalLayout>
-                                            <TouchableOpacity
-                                                activeOpacity={0.75}
-                                                style={{ ...styles.playListPlayButton, backgroundColor: colors.cardPlayBg }}
-                                                onPress={() => null}
-                                            >
-                                                <PlayIcon color={colors.cardPlayIcon} width={15} height={15} />
-                                            </TouchableOpacity>
-                                            <Space width={16} />
-                                            <View>
-                                                <P color="text" size={16} weight="bold">{item.title}</P>
-                                                <Space height={4} />
-                                                <P color="text" size={11} weight="400">{item.artist}</P>
-                                            </View>
-                                            <Space width={"100%"} />
-                                            <P color="text" spacing={1}>{item.duration.toFixed(2).toString().replace(".", ":")}</P>
-                                            <Space width={16} />
-                                            <TouchableOpacity
-                                                activeOpacity={0.75}
-                                                onPress={() => null}
-                                            >
-                                                <HeartIcon color={colors.cardPlayIcon} width={20} height={20} />
-                                            </TouchableOpacity>
-                                        </HorizontalLayout>
-                                    </TouchableOpacity>
-                                )
-                            }}
+                            renderItem={({ item }) => <PlayListItem song={item} />}
                         />
                     </View>
                     <Space height={bottom + 16} />
                 </ScrollView>
             </View>
         </View>
+    )
+}
+
+const PlayListItem = ({ song }: { song: ISong }) => {
+
+    const { navigate } = useNavigation<NavigationProp>()
+    const { colors } = useTheme()
+
+    return (
+        <TouchableOpacity
+            activeOpacity={0.75}
+            onPress={() => navigate("song_player", { song: song })}
+        >
+            <HorizontalLayout>
+                <TouchableOpacity
+                    activeOpacity={0.75}
+                    style={{ ...styles.playListPlayButton, backgroundColor: colors.cardPlayBg }}
+                    onPress={() => null}
+                >
+                    <PlayIcon color={colors.cardPlayIcon} width={15} height={15} />
+                </TouchableOpacity>
+                <Space width={16} />
+                <View>
+                    <P color="text" size={16} weight="bold">{song.title}</P>
+                    <Space height={4} />
+                    <P color="text" size={11} weight="400">{song.artist}</P>
+                </View>
+                <Space width={"100%"} />
+                <P color="text" spacing={1}>{song.duration.toFixed(2).toString().replace(".", ":")}</P>
+                <Space width={16} />
+                <FavoriteButton song={song} />
+            </HorizontalLayout>
+        </TouchableOpacity>
     )
 }
 

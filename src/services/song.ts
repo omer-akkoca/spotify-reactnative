@@ -1,5 +1,5 @@
-import { collection, getDocs, getFirestore, orderBy, query, limit } from "@react-native-firebase/firestore"
-import { ISong } from "../types"
+import { collection, getDocs, getFirestore, orderBy, query, limit, Timestamp, addDoc, where } from "@react-native-firebase/firestore"
+import { IFavoriteSong, ISong } from "../types"
 
 export const fetchNewsSongs = async (): Promise<ISong[]> => {
     try {
@@ -32,6 +32,49 @@ export const fetchPlayList = async (): Promise<ISong[]> => {
         return data;
     } catch (error) {
         console.error('Error fetching play list:', error);
+        throw error;
+    }
+}
+
+export const fetchFavoriteSongs = async ({ userId }: { userId: string }): Promise<IFavoriteSong[]> => {
+    try {
+        const db = getFirestore()
+        const colRef = collection(db, "users", userId, "favorites")
+        const snapshot = await getDocs(colRef)
+        const data = snapshot.docs.map((doc) => {
+            return { ...doc.data() } as IFavoriteSong
+        })
+        return data;
+    } catch (error) {
+        console.error('Error fetching favorite songs:', error);
+        throw error;
+    }
+}
+
+export const addFavoriteSong = async (userId: string, songId: string): Promise<IFavoriteSong> => {
+    try {
+
+        const db = getFirestore()
+        const colRef = collection(db, "users", userId, "favorites")
+        const data: IFavoriteSong = { songId: songId, addedDate: Timestamp.now() }
+        await addDoc(colRef, data)
+        return data;
+    } catch (error) {
+        console.error('Error fetching in add favorite song:', error);
+        throw error;
+    }
+}
+
+export const removeFavoriteSong = async (userId: string, songId: string) => {
+    try {
+        const db = getFirestore()
+        const colRef = collection(db, "users", userId, "favorites")
+        const whereRef = where("songId", "==", songId)
+        const queryRef = query(colRef, whereRef)
+        const docRef = (await queryRef.get()).docs[0].ref
+        await docRef.delete()
+    } catch (error) {
+        console.error('Error fetching in add favorite song:', error);
         throw error;
     }
 }
