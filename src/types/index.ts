@@ -3,7 +3,7 @@ import IImage from "./views/image"
 import IColors from "./models/color"
 import { RootStackParamList, NavigationProp } from "./navigation"
 import { IFontFamily } from "./models/font"
-import { ISong } from "./models/song"
+import { ISong, IFavoriteSong } from "./models/song"
 
 type alignType = "auto" | "left" | "justify" | "right" | "center"
 type transformType = "capitalize" | "lowercase" | "none" | "uppercase"
@@ -18,5 +18,5 @@ export type {
     IP, IImage,
     alignType, transformType, fontWeight, colorsType, fontFamilyType,
     RootStackParamList, stackTypes, NavigationProp,
-    IColors, IFontFamily, ISong,
+    IColors, IFontFamily, ISong, IFavoriteSong,
 }

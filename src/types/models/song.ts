@@ -9,3 +9,8 @@ export interface ISong{
     song: string,
     cover: string,
 }
+
+export interface IFavoriteSong{
+    songId: string,
+    addedDate: Timestamp,
+} 

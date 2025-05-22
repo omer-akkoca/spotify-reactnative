@@ -4,6 +4,8 @@ import { AuthProvider, ThemeProvider } from "./src/providers";
 import RootNavigation from "./src/navigation";
 import SystemNavigationBar from "react-native-system-navigation-bar";
 import TrackPlayer from 'react-native-track-player';
+import { Provider } from 'react-redux'
+import store from "./src/store";
 
 const App = () => {
 
@@ -18,11 +20,13 @@ const App = () => {
 
     return (
         <SafeAreaProvider>
-            <ThemeProvider>
-                <AuthProvider>
-                    <RootNavigation />
-                </AuthProvider>
-            </ThemeProvider>
+            <Provider store={store}>
+                <ThemeProvider>
+                    <AuthProvider>
+                        <RootNavigation />
+                    </AuthProvider>
+                </ThemeProvider>
+            </Provider>
         </SafeAreaProvider>
     )
 }
