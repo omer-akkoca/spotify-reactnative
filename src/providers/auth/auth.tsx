@@ -1,10 +1,12 @@
 import React, { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
-import { FirebaseAuthTypes, getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+import { IUser } from "../../types";
+import { fetchUserDetails } from "../../services";
 
 type AuthProviderProps = PropsWithChildren<{}>
 
 type AuthContextType = {
-    user: FirebaseAuthTypes.User | null,
+    user: IUser | null,
     loading: boolean,
 }
 
@@ -16,13 +18,19 @@ const AuthContext = createContext<AuthContextType>({
 const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null)
-
+    const [user, setUser] = useState<IUser | null>(null)
+    
     useEffect(() => {
         const subscriber = onAuthStateChanged(
             getAuth(),
-            (data) => {
-                setUser(data)
+            async (data) => {
+                const userId = data?.uid;
+                if (userId) {
+                    const result = await fetchUserDetails(userId)
+                    setUser(result)
+                } else {
+                    setUser(null)
+                }
                 setLoading(false)
             },
         )

@@ -1,6 +1,8 @@
 import { getAuth, createUserWithEmailAndPassword, FirebaseAuthTypes, signInWithEmailAndPassword, signOut as firebaseSignOut } from '@react-native-firebase/auth';
-import { ISignInReq, ISignUpReq } from '../types';
-import { collection, doc, getFirestore, setDoc } from '@react-native-firebase/firestore';
+import { ISignInReq, ISignUpReq, IUser } from '../types';
+import { collection, doc, getFirestore, setDoc, Timestamp } from '@react-native-firebase/firestore';
+
+const defaultUserAvatarURL = "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg";
 
 export const signUp = async (signUpReq: ISignUpReq): Promise<FirebaseAuthTypes.User | null> => {
     try {
@@ -13,7 +15,15 @@ export const signUp = async (signUpReq: ISignUpReq): Promise<FirebaseAuthTypes.U
         )
         const collectionRef = collection(db, "users")
         const docRef = doc(collectionRef, userCredential.user.uid)
-        await setDoc(docRef, { name: fullName, email: email });
+        const user: IUser = {
+            id: userCredential.user.uid,
+            name: fullName,
+            email: email,
+            photoURL: defaultUserAvatarURL,
+            createdAt: Timestamp.now(),
+            updatedAt: Timestamp.now(),
+        }
+        await setDoc(docRef, user);
         return userCredential.user;
     } catch (error: any) {
         switch (error.code) {
