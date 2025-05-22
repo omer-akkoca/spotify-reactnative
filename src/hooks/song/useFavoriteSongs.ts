@@ -24,9 +24,9 @@ export const useFavoriteSongs = (): IUseFavoriteSongs => {
         let isMounted = true
 
         const loadData = async () => {
-            if (user?.uid) {
+            if (user?.id) {
                 try {
-                    const result = await fetchFavoriteSongs({ userId: user.uid })
+                    const result = await fetchFavoriteSongs({ userId: user.id })
                     if (isMounted) {
                         setData(result)
                         dispatch(initialFavoriteSongs(result))

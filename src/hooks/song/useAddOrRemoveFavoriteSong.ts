@@ -26,10 +26,10 @@ export const useAddOrRemoveFavoriteSong = ({ songId = "" }): IUseAddOrRemoveFavo
         const loadData = async () => {
             try {
                 if (isFavorite) {
-                    await removeFavoriteSong(user!.uid, songId)
+                    await removeFavoriteSong(user!.id, songId)
                     dispatch(removeFavoriteSongFromStore(songId))
                 } else {
-                    const newFavSong = await addFavoriteSong(user!.uid, songId)
+                    const newFavSong = await addFavoriteSong(user!.id, songId)
                     dispatch(addFavoriteSongToStore(newFavSong))
                 }
             } catch (err) {
